@@ -48,9 +48,13 @@ def main():
     instance.wait_until_running()
     instance.load()
     print(f"After Waiting: Instance is {instance.state['Name']}")
+    
     print(f"Public IP Address: is {instance.public_ip_address}")
     print(f"Instance Tags: {instance.tags}")
-    print(instance.create_tags(Tags=[{'Key': 'Name', 'Value': 'Haene'}]))
+    instance.create_tags(Tags=[{'Key': 'Name', 'Value': 'Haene'}])
+    instance.load()
+    print(f"Instance Tags: {instance.tags}")
+    
     instance.terminate()
     print(f"Before Terminated: Instance is {instance.state['Name']}")
     instance.wait_until_terminated()
