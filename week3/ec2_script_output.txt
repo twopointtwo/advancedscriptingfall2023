@@ -1,0 +1,7 @@
+Before Waiting: Instance is pending
+After Waiting: Instance is running
+Public IP Address: is 34.230.14.96
+Instance Tags: None
+Instance Tags: [{'Key': 'Name', 'Value': 'Haene'}]
+Before Terminated: Instance is running
+After Terminated: Instance is terminated
