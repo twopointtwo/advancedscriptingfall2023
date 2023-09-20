@@ -1,0 +1,2 @@
+InstanceId,InstanceType,State,PublicIpAddress,Monitoring,Placement
+i-0e6619909bee4770a,t3.micro,running,3.89.180.101,disabled,us-east-1a
