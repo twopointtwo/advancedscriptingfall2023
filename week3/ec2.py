@@ -49,6 +49,7 @@ def main():
     instance.load()
     print(f"After Waiting: Instance is {instance.state['Name']}")
     
+    """
     print(f"Public IP Address: is {instance.public_ip_address}")
     print(f"Instance Tags: {instance.tags}")
     instance.create_tags(Tags=[{'Key': 'Name', 'Value': 'Haene'}])
@@ -62,6 +63,8 @@ def main():
     print(f"After Terminated: Instance is {instance.state['Name']}")
 
 #print(instance.instance_id)
+
+"""
 
 if __name__ == "__main__":
     main()
