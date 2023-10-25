@@ -1,0 +1,19 @@
+The name of the method that creates a new lambda function: 
+
+create_function
+
+
+The required parameters for the method that creates a lambda function:
+
+FunctionName: A name for the Lambda function.
+Role: The Amazon Resource Name (ARN) of the execution role that grants permissions to the Lambda function.
+Code: The deployment package of the Lambda function.
+
+Runtime: (Runtime is required if the deployment package is a .zip file archive.) The runtime environment for the Lambda function.
+Handler: (Handler is required if the deployment package is a .zip file archive.) The name of the function (within your code) that Lambda calls when the function is invoked.
+
+
+List two ways you can specify the python code that should be used in your Lambda function:
+
+Provide the function code as inline code using the ZipFile parameter in the create_function method.
+Provide a reference to a location in Amazon S3 where the deployment package (a ZIP file) containing the function code is stored. You specify the S3 bucket and object key as the S3Bucket and S3Key parameters.
