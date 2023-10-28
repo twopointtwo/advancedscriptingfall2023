@@ -1,0 +1,35 @@
+Other Security Monitoring
+
+Monitor Unauthorized Access using "lookup_events" function:
+Looks up management events or CloudTrail Insights events that are captured by CloudTrail.
+Client: boto3.client('cloudtrail')
+Function: Use lookup_events function to retrieve CloudTrail events.
+Response Elements: Examine the Events field in the response object for events with 'EventName' set to 'ConsoleLogin' or 'ConsoleLogout'. 
+Elements:
+EventName: Indicates login/logout events.
+EventTime: Timestamp of the event.
+EventSource: Identifies the source of the event.
+SourceIPAddress: Provides the IP address from which the request was made.
+
+
+Monitor Changes to IAM Policies using "list_policies" function:
+Client: boto3.client('iam') (for IAM policy information) and boto3.client('cloudtrail') (for CloudTrail events).
+Function: Uses the list_policies from the IAM client to list IAM policies. Then, uses the lookup_events from the CloudTrail client to track changes.
+Response Elements: Detects IAM policy changes, analyzes the Events field in the CloudTrail response, along with the IAM policy details. Elements:
+EventName: Indicates the policy change event.
+EventTime: Timestamp of the event.
+EventSource: Identifies the source of the event.
+Resources: Provides information about the IAM policy resource.
+CloudTrailEventData: Contains details about the policy change.
+
+
+Monitoring S3 Bucket Access:
+Looks up management events or CloudTrail Insights events that are captured by CloudTrail.
+Client: boto3.client('cloudtrail')
+Function: Uses lookup_events to retrieve CloudTrail events related to S3 bucket access.
+Response Elements: Examines the Events field for events related to S3 bucket access. 
+Elements:
+EventName: Identifies S3-related actions like PutObject, GetObject, or DeleteObject.
+EventTime: Timestamp of the event.
+EventSource: Indicates the source of the event.
+Resources: Provides information about the S3 bucket and objects involved.
