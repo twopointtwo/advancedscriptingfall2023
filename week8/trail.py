@@ -5,7 +5,7 @@ import boto3,s3enforce,json
 def CreateTrail(trail_name, bucket_name):
     trailclient = boto3.client('cloudtrail')
     try:
-        response = trailclient.create_trail(S3BucketName=bucket_name, Name=trail_name)  # Corrected 'trial_name' to 'trail_name'
+        response = trailclient.create_trail(S3BucketName=bucket_name, Name=trail_name)
         return response
     except trailclient.exceptions.TrailAlreadyExistsException as error:
         response = trailclient.start_logging(Name=trail_name)  
