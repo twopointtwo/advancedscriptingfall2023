@@ -42,14 +42,16 @@ def main():
 
     instance_id = Create_EC2(AMI, client)
 
-    ec2 = boto3.resource('ec2')
-    instance = ec2.Instance(instance_id)
-    print(f"Before Waiting: Instance is {instance.state['Name']}")
-    instance.wait_until_running()
-    instance.load()
-    print(f"After Waiting: Instance is {instance.state['Name']}")
-    
-    """
+
+    ec2_instance = boto3.resource('ec2')
+    ec2 = ec2_instance.Instance(instance_id)
+    print(ec2.instance_id)
+    print("Waiting for instance to run...")
+    print(f"Instance is {ec2.state['Name']}")
+    ec2.wait_until_running()
+    print("Instance is now up and running...")
+    print(f"Instance is {ec2.state['Name']}")
+"""
     print(f"Public IP Address: is {instance.public_ip_address}")
     print(f"Instance Tags: {instance.tags}")
     instance.create_tags(Tags=[{'Key': 'Name', 'Value': 'Haene'}])
@@ -62,10 +64,8 @@ def main():
     instance.load()
     print(f"After Terminated: Instance is {instance.state['Name']}")
 
-#print(instance.instance_id)
-
+    #print(instance.instance_id)
 """
 
 if __name__ == "__main__":
     main()
-
