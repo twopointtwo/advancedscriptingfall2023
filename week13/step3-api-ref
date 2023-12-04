@@ -1,6 +1,7 @@
-1. Management API [azure-mgmt-web]
-2.
-3. azure-keyvault-keys
-4. 
+1.  Management API [azure-mgmt-web]
+2.  create_or_update from the web_apps client in the Azure Python SDK
+3.  azure-keyvault-keys and azure-identity 
+4.  azure-keyvault-secrets Package
+
 
 
