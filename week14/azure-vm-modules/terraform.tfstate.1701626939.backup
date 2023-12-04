@@ -1,0 +1,352 @@
+{
+  "version": 4,
+  "terraform_version": "1.6.4",
+  "serial": 23,
+  "lineage": "ea8cfbee-4c03-210b-18d2-d122810bee9d",
+  "outputs": {
+    "linux_vm_public_name": {
+      "value": [
+        "hsafavi1-sample-server.centralus.cloudapp.azure.com"
+      ],
+      "type": [
+        "tuple",
+        [
+          "string"
+        ]
+      ]
+    }
+  },
+  "resources": [
+    {
+      "module": "module.linuxservers",
+      "mode": "data",
+      "type": "azurerm_resource_group",
+      "name": "vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": []
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "azurerm_availability_set",
+      "name": "vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Compute/availabilitySets/HAENE-VM-avset",
+            "location": "eastus",
+            "managed": true,
+            "name": "HAENE-VM-avset",
+            "platform_fault_domain_count": 2,
+            "platform_update_domain_count": 2,
+            "proximity_placement_group_id": null,
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "tags": {
+              "source": "terraform"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.linuxservers.data.azurerm_resource_group.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "azurerm_network_security_group",
+      "name": "vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/networkSecurityGroups/HAENE-VM-nsg",
+            "location": "eastus",
+            "name": "HAENE-VM-nsg",
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "security_rule": [],
+            "tags": {
+              "source": "terraform"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.linuxservers.data.azurerm_resource_group.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "azurerm_network_security_rule",
+      "name": "vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "access": "Allow",
+            "description": "Allow remote protocol in from all locations",
+            "destination_address_prefix": "*",
+            "destination_address_prefixes": null,
+            "destination_application_security_group_ids": null,
+            "destination_port_range": "22",
+            "destination_port_ranges": null,
+            "direction": "Inbound",
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/networkSecurityGroups/HAENE-VM-nsg/securityRules/allow_remote_22_in_all",
+            "name": "allow_remote_22_in_all",
+            "network_security_group_name": "HAENE-VM-nsg",
+            "priority": 101,
+            "protocol": "Tcp",
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "source_address_prefix": "",
+            "source_address_prefixes": [
+              "0.0.0.0/0"
+            ],
+            "source_application_security_group_ids": null,
+            "source_port_range": "*",
+            "source_port_ranges": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.linuxservers.azurerm_network_security_group.vm",
+            "module.linuxservers.data.azurerm_resource_group.vm"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "azurerm_public_ip",
+      "name": "vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "allocation_method": "Dynamic",
+            "ddos_protection_mode": "VirtualNetworkInherited",
+            "ddos_protection_plan_id": null,
+            "domain_name_label": "hsafavi1-sample-server",
+            "edge_zone": "",
+            "fqdn": "hsafavi1-sample-server.centralus.cloudapp.azure.com",
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/publicIPAddresses/HAENE-VM-pip-0",
+            "idle_timeout_in_minutes": 4,
+            "ip_address": "",
+            "ip_tags": {},
+            "ip_version": "IPv4",
+            "location": "centralus",
+            "name": "HAENE-VM-pip-0",
+            "public_ip_prefix_id": null,
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "reverse_fqdn": "",
+            "sku": "Basic",
+            "sku_tier": "Regional",
+            "tags": {
+              "source": "terraform"
+            },
+            "timeouts": null,
+            "zones": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.linuxservers.data.azurerm_resource_group.vm"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "azurerm_storage_account",
+      "name": "vm_sa",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": []
+    },
+    {
+      "module": "module.linuxservers",
+      "mode": "managed",
+      "type": "random_id",
+      "name": "vm_sa",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "AuOrsh6X",
+            "b64_url": "AuOrsh6X",
+            "byte_length": 6,
+            "dec": "3176861408919",
+            "hex": "02e3abb21e97",
+            "id": "AuOrsh6X",
+            "keepers": {
+              "vm_hostname": "HAENE-VM"
+            },
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "data",
+      "type": "azurerm_resource_group",
+      "name": "network",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi",
+            "location": "eastus",
+            "managed_by": "",
+            "name": "fall23-adv-scripting-azure-hsafavi",
+            "tags": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "azurerm_subnet",
+      "name": "subnet_count",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": []
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "azurerm_subnet",
+      "name": "subnet_for_each",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "index_key": "subnet1",
+          "schema_version": 0,
+          "attributes": {
+            "address_prefixes": [
+              "10.0.1.0/24"
+            ],
+            "delegation": [],
+            "enforce_private_link_endpoint_network_policies": false,
+            "enforce_private_link_service_network_policies": false,
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1",
+            "name": "subnet1",
+            "private_endpoint_network_policies_enabled": true,
+            "private_link_service_network_policies_enabled": true,
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "service_endpoint_policy_ids": [],
+            "service_endpoints": [],
+            "timeouts": null,
+            "virtual_network_name": "acctvnet"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.network.azurerm_virtual_network.vnet",
+            "module.network.data.azurerm_resource_group.network"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "azurerm_virtual_network",
+      "name": "vnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address_space": [
+              "10.0.0.0/16"
+            ],
+            "bgp_community": "",
+            "ddos_protection_plan": [],
+            "dns_servers": [],
+            "edge_zone": "",
+            "encryption": [],
+            "flow_timeout_in_minutes": 0,
+            "guid": "ec2b9680-08d1-44f6-b5a1-a2d2ade62919",
+            "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/virtualNetworks/acctvnet",
+            "location": "eastus",
+            "name": "acctvnet",
+            "resource_group_name": "fall23-adv-scripting-azure-hsafavi",
+            "subnet": [
+              {
+                "address_prefix": "10.0.1.0/24",
+                "id": "/subscriptions/02cb372f-c8c5-4a0c-b9f4-574eeb4d6d38/resourceGroups/fall23-adv-scripting-azure-hsafavi/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1",
+                "name": "subnet1",
+                "security_group": ""
+              }
+            ],
+            "tags": {
+              "environment": "dev"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.network.data.azurerm_resource_group.network"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": [
+    {
+      "object_kind": "resource",
+      "config_addr": "module.linuxservers.azurerm_virtual_machine_extension.extension",
+      "status": "pass",
+      "objects": null
+    },
+    {
+      "object_kind": "resource",
+      "config_addr": "module.linuxservers.azurerm_virtual_machine.vm_linux",
+      "status": "unknown",
+      "objects": [
+        {
+          "object_addr": "module.linuxservers.azurerm_virtual_machine.vm_linux[0]",
+          "status": "unknown"
+        }
+      ]
+    },
+    {
+      "object_kind": "resource",
+      "config_addr": "module.linuxservers.azurerm_virtual_machine.vm_windows",
+      "status": "pass",
+      "objects": null
+    },
+    {
+      "object_kind": "resource",
+      "config_addr": "module.linuxservers.azurerm_virtual_machine_extension.extensions",
+      "status": "pass",
+      "objects": null
+    }
+  ]
+}
